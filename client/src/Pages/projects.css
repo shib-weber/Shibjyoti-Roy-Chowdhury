@@ -1,0 +1,19 @@
+.right{
+    background-color: #252425a1;
+}
+.circle{
+    background-color: rgba(37, 36, 37, 0.63);
+}
+    @keyframes flicker {
+    0% { box-shadow: 0 0 2px #6463638f; }
+    5% { box-shadow: 0 0 5px #6463638f; }
+    10% { box-shadow: 0 0 15px #6463638f; }
+    15% { box-shadow: 0 0 5px #6463638f; }
+    20% { box-shadow: 0 0 10px #6463638f; }
+    30% { box-shadow: 0 0 15px #6463638f; }
+    100% { box-shadow: 0 0 15px #6463638f; }
+    }
+
+    .flicker-glow {
+    animation: flicker 5.2s ease-out forwards;
+    }
