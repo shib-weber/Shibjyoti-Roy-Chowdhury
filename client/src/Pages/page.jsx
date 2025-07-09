@@ -15,9 +15,22 @@ import Pic2 from '../assets/yn1.jpg';
 
 export default function Portfolio() {
     const [menuOpen, setMenuOpen] = useState(false);
-    useEffect(() => {
-  window.scrollTo(0, 0);
+
+useEffect(() => {
+  const handleLoad = () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100); // delay to let GitHub Pages load layout
+  };
+
+  // Scroll to top on full load (not just mount)
+  window.addEventListener('load', handleLoad);
+
+  return () => {
+    window.removeEventListener('load', handleLoad);
+  };
 }, []);
+
 
   return (
     <div id="sections" className=" font-sans light:bg-white light:text-black dark:bg-black dark:text-white min-h-screen">
