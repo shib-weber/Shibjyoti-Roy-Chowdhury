@@ -8,7 +8,6 @@ import Education from './Education';
 import About from './about';
 import AIStrokes from '../components/Aistroke';
 import AIStroke2 from '../components/Aistroke2'
-
 import Pic from '../assets/src.jpg'
 import Pic2 from '../assets/yn1.jpg';
 
@@ -39,22 +38,22 @@ export default function Portfolio() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex space-x-4 items-center text-sm sm:text-base">
-            <button onClick={() => scrollToSection("aboutt")} className="hover:text-yellow-400">About</button>
-            <button onClick={() => scrollToSection("timelinet")} className="hover:text-yellow-400">Education</button>
-            <button onClick={() => scrollToSection("projectst")} className="hover:text-yellow-400">Projects</button>
-            <button onClick={() => scrollToSection("techstackt")} className="hover:text-yellow-400">Tech Stack</button>
-            <button onClick={() => scrollToSection("contactt")} className="hover:text-yellow-400">Contact</button>
+            <button onClick={() => scrollToSection("aboutt")} className="bg-amber-800 hover:text-yellow-400" style={{backgroundColor:"transparent"}}>About</button>
+            <button onClick={() => scrollToSection("timelinet")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Education</button>
+            <button onClick={() => scrollToSection("projectst")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Projects</button>
+            <button onClick={() => scrollToSection("techstackt")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Tech Stack</button>
+            <button onClick={() => scrollToSection("contactt")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Contact</button>
           </div>
         </div>
 
         {/* Mobile Nav */}
         {menuOpen && (
           <div className="md:hidden flex flex-col items-start mt-4 px-4 space-y-2 text-sm">
-            <button onClick={() => scrollToSection("aboutt")} className="hover:text-yellow-400">About</button>
-            <button onClick={() => scrollToSection("timelinet")} className="hover:text-yellow-400">Timeline</button>
-            <button onClick={() => scrollToSection("projectst")} className="hover:text-yellow-400">Projects</button>
-            <button onClick={() => scrollToSection("techstackt")} className="hover:text-yellow-400">Tech Stack</button>
-            <button onClick={() => scrollToSection("contactt")} className="hover:text-yellow-400">Contact</button>
+            <button onClick={() => scrollToSection("aboutt")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>About</button>
+            <button onClick={() => scrollToSection("timelinet")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Education</button>
+            <button onClick={() => scrollToSection("projectst")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Projects</button>
+            <button onClick={() => scrollToSection("techstackt")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Tech Stack</button>
+            <button onClick={() => scrollToSection("contactt")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Contact</button>
           </div>
         )}
       </nav>

@@ -3,22 +3,29 @@ import { motion, useInView } from "framer-motion";
 
 const educationData = [
   {
-    title: "B.Tech in CSE (AIML)",
-    institution: "MAKAUT, West Bengal",
-    year: "2022 - 2026",
-    description: "Focus on Artificial Intelligence and full-stack development.",
+    title: "B.Tech in Computer Science and Engineering (Artificial Intelligence and Machine Learning)",
+    institution: "Meghnad Saha Institute of Technology",
+    year: "2023 - 2027",
+    description: `Currently pursuing B.Tech with a specialization in Artificial Intelligence and Machine Learning. 
+Actively involved in full-stack web development and AI-based projects. 
+Dedicated to building a strong foundation in core CS concepts, data structures, algorithms, and real-world problem solving. 
+Demonstrated consistent performance, team collaboration, and active participation in technical events and hackathons.`,
   },
   {
-    title: "Higher Secondary",
-    institution: "XYZ High School",
-    year: "2020 - 2022",
-    description: "PCM stream with Computer Science.",
+    title: "Higher Secondary (ISC - Class 12)",
+    institution: "Orient Day School",
+    year: "2021 - 2023",
+    description: `Completed ISC with 97% in the Science stream, specializing in Physics, Chemistry, Mathematics, and Computer Science.
+Focused on building strong logical and analytical reasoning through programming in Java and solving complex problems.
+Recognized as a sincere, punctual, and hardworking student with a strong commitment to academic excellence.`,
   },
   {
-    title: "Secondary Education",
-    institution: "ABC School",
-    year: "2010 - 2020",
-    description: "Core academic development and early programming interest.",
+    title: "Secondary Education (ICSE - Class 10)",
+    institution: "Orient Day School",
+    year: "2011 - 2021",
+    description: `Completed ICSE with 91% marks, laying the foundation for strong academic and intellectual development.
+Began exploring early programming concepts and developed an interest in technology and computing.
+Built a disciplined and growth-oriented mindset from a young age, driven by curiosity and determination.`,
   },
 ];
 

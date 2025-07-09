@@ -60,7 +60,7 @@
                     }}
                     onClick={() => setActiveIndex(index)}
                     >
-                    {project.title}
+                    {project.project}
                     </div>
                 </div>
                 );
@@ -69,14 +69,14 @@
 
             {/* Center Info */}
             <div className="circle absolute inset-[25%] rounded-full flex flex-col items-center justify-center text-center px-4">
-            <h2 className="text-lg sm:text-xl font-bold text-white mb-2">
+            <h2 className="text-xs sm:text-l font-bold text-white mb-2">
                 {projects[activeIndex].title}
             </h2>
             <a
                 href={projects[activeIndex].link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 font-semibold hover:underline flex items-center justify-center gap-1 text-sm"
+                className="text-blue-600 text-xs sm:text-sm font-semibold hover:underline flex items-center justify-center gap-1 "
             >
                 <FaGithub /> View Project
             </a>
@@ -89,18 +89,17 @@
             initial={{ x: 200, opacity: 0 }}
             animate={rightInView ? { x: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="right shadow-fuchsia-500 w-full sm:w-[500px] md:w-[500px] lg:w-[100%] min-h-[300px] h-full sm:h-[350px] lg:h-[350px] rounded-lg p-6 text-center text-white shadow-lg overflow-y-auto"
+            className="right shadow-fuchsia-500 w-full sm:w-[500px] md:w-[500px] lg:w-[100%] min-h-[300px] h-full sm:h-[350px] lg:h-[350px] rounded-lg p-6 text-center justify-center text-white shadow-lg overflow-y-auto"
         >
-            <h2 className="text-xl font-bold mb-2">{projects[activeIndex].title}</h2>
-            <p className="text-sm mb-2">{projects[activeIndex].description}</p>
-            <a
-            href={projects[activeIndex].link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 font-semibold hover:underline flex items-center justify-center gap-1 text-sm"
+            <h2 className="text-xl  font-bold mb-8">{projects[activeIndex].title}</h2>
+            <p className="text-sm mb-6">{projects[activeIndex].description}</p>
+            <button
+            onClick={() => window.open(projects[activeIndex].live, "_blank", "noopener,noreferrer")}
+            className=" ml-[15%] sm:ml-[38%] text-purple-600 hover:text-amber-500 font-semibold hover:underline flex items-center justify-center gap-1 text-sm"style={{background:"transparent"}}
             >
-            <FaGithub /> View Project
-            </a>
+            View Project Live
+            </button>
+
         </motion.div>
         </div>
     );

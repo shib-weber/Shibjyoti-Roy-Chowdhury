@@ -13,10 +13,10 @@ export default function Contacts () {
                 <a href="mailto:shibjyoti252@gmail.com" target="_blank" rel="noopener noreferrer">
                     <FaEnvelope className="hover:text-red-500" />
                 </a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+                <a href="https://linkedin.com/in/shibjyoti-roy-chowdhury-a179b0309" target="_blank" rel="noopener noreferrer">
                     <FaLinkedin className="hover:text-blue-500" />
                 </a>
-                <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/the_awful_guy._?igsh=NW16dWIwOW9wMW5n" target="_blank" rel="noopener noreferrer">
                     <FaInstagram className="hover:text-pink-500" />
                 </a>
                 </div>
