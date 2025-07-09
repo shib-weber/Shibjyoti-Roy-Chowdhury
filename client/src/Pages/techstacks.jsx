@@ -87,46 +87,51 @@ export default function TechStackGrid() {
     return () => observer.disconnect();
   }, []);
 
-  const renderStack = (techStacksToUse) =>
-    techStacksToUse.map((tech, index) => {
-      const shouldFlicker = !tech.name && triggerFlicker;
-      const isHovered = hoveredIndex === index;
-      return (
-        <div
-          key={index}
-          className={`flex flex-col items-center justify-center p-1 gap-1 sm:p-4 bg-[#111111] rounded-md transition-transform duration-300 hover:scale-105 ${
-            shouldFlicker ? "flicker-glow" : ""
-          }`}
-          style={{
-            boxShadow:
-              !tech.name || isHovered
-                ? `0 0 15px ${tech.shadowColor}`
-                : "0 0 0 transparent",
-          }}
-          onMouseEnter={() => setHoveredIndex(index)}
-          onMouseLeave={() => setHoveredIndex(null)}
-        >
-          {tech.icon ? (
-            <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2" style={{ backgroundColor: "transparent" }}>
-              {tech.icon}
-            </div>
-          ) : (
-            <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2"></div>
-          )}
-          <span className="text-xs sm:text-sm text-center">{tech.name}</span>
-        </div>
-      );
-    });
+const renderStack = (techStacksToUse, i) =>
+  techStacksToUse.map((tech, index) => {
+    const shouldFlicker = !tech.name && triggerFlicker;
+    const isHovered = hoveredIndex === index;
+    const alwaysShowShadow = i === 1; // For small screen (mobile)
+
+    return (
+      <div
+        key={index}
+        className={`flex flex-col items-center justify-center p-1 gap-1 sm:p-4 bg-[#111111] rounded-md transition-transform duration-300 hover:scale-105 ${
+          shouldFlicker ? "flicker-glow" : ""
+        }`}
+        style={{
+          boxShadow:
+            !tech.name || isHovered || alwaysShowShadow
+              ? `0 0 15px ${tech.shadowColor}`
+              : "0 0 0 transparent",
+        }}
+        onMouseEnter={() => setHoveredIndex(index)}
+        onMouseLeave={() => setHoveredIndex(null)}
+      >
+        {tech.icon ? (
+          <div
+            className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2"
+            style={{ backgroundColor: "transparent" }}
+          >
+            {tech.icon}
+          </div>
+        ) : (
+          <div className="text-3xl sm:text-4xl md:text-5xl mb-1 sm:mb-2"></div>
+        )}
+        <span className="text-xs sm:text-sm text-center">{tech.name}</span>
+      </div>
+    );
+  });
 
   return (
     <section ref={sectionRef} className="techno py-10 text-white">
       {/* Show reordered for small, original for medium+ */}
       <div className="grid grid-cols-4 md:hidden gap-2 px-8 sm:px-8 max-w-7xl mx-auto">
-        {renderStack(reorderedSmallScreen)}
+        {renderStack(reorderedSmallScreen,1)}
       </div>
 
       <div className="hidden md:grid md:grid-cols-9 gap-6 px-6 sm:px-8 max-w-7xl mx-auto">
-        {renderStack(originalTechStacks)}
+        {renderStack(originalTechStacks,0)}
       </div>
     </section>
   );
