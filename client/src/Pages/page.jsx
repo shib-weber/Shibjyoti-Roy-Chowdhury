@@ -64,22 +64,22 @@ export default function Portfolio() {
 
     {/* Navigation Links */}
     <div className="hidden md:flex space-x-4 items-center">
-      <a href="#about" className="sw:hover:text-yellow-400">About</a>
-      <a href="#timeline" className="hover:text-yellow-400">Education</a>
-      <a href="#projects" className="hover:text-yellow-400">Projects</a>
-      <a href="#techstack" className="hover:text-yellow-400">Tech Stack</a>
-      <a href="#contact" className="hover:text-yellow-400">Contact</a>
+      <a href="#aboutt" className="sw:hover:text-yellow-400">About</a>
+      <a href="#timelinet" className="hover:text-yellow-400">Education</a>
+      <a href="#projectst" className="hover:text-yellow-400">Projects</a>
+      <a href="#techstackt" className="hover:text-yellow-400">Tech Stack</a>
+      <a href="#contactt" className="hover:text-yellow-400">Contact</a>
     </div>
   </div>
 
   {/* Mobile menu */}
   {menuOpen && (
     <div className="md:hidden flex flex-col items-start mt-4 px-4 space-y-2 text-sm">
-      <a href="#about" className="hover:text-yellow-400" onClick={() => setMenuOpen(false)}>About</a>
-      <a href="#timeline" className="hover:text-yellow-400" onClick={() => setMenuOpen(false)}>Timeline</a>
-      <a href="#projects" className="hover:text-yellow-400" onClick={() => setMenuOpen(false)}>Projects</a>
-      <a href="#techstack" className="hover:text-yellow-400" onClick={() => setMenuOpen(false)}>Tech Stack</a>
-      <a href="#contact" className="hover:text-yellow-400" onClick={() => setMenuOpen(false)}>Contact</a>
+      <a href="#aboutt" className="hover:text-yellow-400" onClick={() => setMenuOpen(false)}>About</a>
+      <a href="#timelinet" className="hover:text-yellow-400" onClick={() => setMenuOpen(false)}>Timeline</a>
+      <a href="#projectst" className="hover:text-yellow-400" onClick={() => setMenuOpen(false)}>Projects</a>
+      <a href="#techstackt" className="hover:text-yellow-400" onClick={() => setMenuOpen(false)}>Tech Stack</a>
+      <a href="#contactt" className="hover:text-yellow-400" onClick={() => setMenuOpen(false)}>Contact</a>
     </div>
   )}
 </nav>
@@ -94,7 +94,7 @@ export default function Portfolio() {
       <AIStrokes></AIStrokes>
 
       {/* Timeline */}
-        <section id="timeline" className="p-6 ml-5 mr-5 pt-16 mb-10  rounded-lg shadow">        
+        <section id="timelinet" className="p-6 ml-5 mr-5 pt-16 mb-10  rounded-lg shadow">        
         <h1 className="text-4xl font-semibold mb-6 t">
                     <span
                         className="text-transparent bg-clip-text"
@@ -113,7 +113,7 @@ export default function Portfolio() {
       <AIStroke2></AIStroke2>
 
       {/* Tech Stack */}
-      <section id="techstack" className="ml-5 mr-5 p-6   mb-16">
+      <section id="techstackt" className="ml-5 mr-5 p-6   mb-16">
         <h1 className="text-4xl font-semibold mb-6 t">
                     <span
                         className="text-transparent bg-clip-text"
@@ -134,7 +134,7 @@ export default function Portfolio() {
       <div className="animations shadow-lg rounded-full shadow-amber-900 bg-transparent flex absolute h-[210px] w-[15px] sm:ml-[84%] ml-[80%] sm:-mt-30 -mt-40"></div>
 
       {/* Projects */}
-      <section id="projects" className="p-6 mt-20 ml-5 mr-5 mb-26  ">
+      <section id="projectst" className="p-6 mt-20 ml-5 mr-5 mb-26  ">
         <h1 className="text-4xl font-semibold mb-6 t">
                     <span
                         className="text-transparent bg-clip-text"

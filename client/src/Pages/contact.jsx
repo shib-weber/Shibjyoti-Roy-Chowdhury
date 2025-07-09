@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 export default function Contacts () {
     return (
         <div>
-            <section id="contact" className=" ml-5 mr-5 p-6 mb-16">
+            <section id="contactt" className=" ml-5 mr-5 p-6 mb-16">
                 <div className="flex justify-center space-x-6 text-5xl">
                 <a href="https://github.com/shib-weber" target="_blank" rel="noopener noreferrer">
                     <FaGithub className="hover:text-violet-800" />

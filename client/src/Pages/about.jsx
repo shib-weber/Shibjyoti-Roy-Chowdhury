@@ -11,7 +11,7 @@ export default function About() {
   return (
     <div className="mt-12 sw:mt-12 sw:mb-12 mb-12 bg-transparent flex items-center justify-center px-4">
       <section
-        id="about"
+        id="aboutt"
         className="flex mb-0 sm:flex-row flex-col pt-16 pb-16 px-6 max-w-5xl w-full bg-transparent  rounded-3xl shadow-[0_0_30px_rgba(255,255,255,0.05)] relative overflow-hidden"
       >
         {/* Bulb & Circuit */}
