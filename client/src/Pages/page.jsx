@@ -8,13 +8,16 @@ import Education from './Education';
 import About from './about';
 import AIStrokes from '../components/Aistroke';
 import AIStroke2 from '../components/Aistroke2'
+import { useEffect } from 'react';
 
 import Pic from '../assets/src.jpg'
 import Pic2 from '../assets/yn1.jpg';
 
-
 export default function Portfolio() {
     const [menuOpen, setMenuOpen] = useState(false);
+    useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
 
   return (
     <div id="sections" className=" font-sans light:bg-white light:text-black dark:bg-black dark:text-white min-h-screen">
