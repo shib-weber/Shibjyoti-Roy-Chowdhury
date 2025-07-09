@@ -15,21 +15,31 @@ import Pic2 from '../assets/yn1.jpg';
 
 export default function Portfolio() {
     const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    // Clear hash before scroll
+    const clearHash = () => {
+      if (window.location.hash) {
+        // Prevent GitHub from jumping to anchor
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+    };
 
-useEffect(() => {
-  const handleLoad = () => {
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 100); // delay to let GitHub Pages load layout
-  };
+    // Scroll to top with delay to override GitHub behavior
+    const scrollToTop = () => {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }, 200); // Delay to ensure layout is complete
+    };
 
-  // Scroll to top on full load (not just mount)
-  window.addEventListener('load', handleLoad);
+    window.addEventListener("load", () => {
+      clearHash();
+      scrollToTop();
+    });
 
-  return () => {
-    window.removeEventListener('load', handleLoad);
-  };
-}, []);
+    return () => {
+      // clean up
+    };
+  }, []);
 
 
   return (
