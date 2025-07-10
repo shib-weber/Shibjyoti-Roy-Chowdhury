@@ -30,8 +30,8 @@ export default function Portfolio() {
             Shibjyoti Roy Chowdhury
           </div>
 
-          <div className="md:hidden">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="focus:outline-none text-white text-xl">
+          <div className="md:hidden bg-black">
+            <button onClick={() => setMenuOpen(!menuOpen)} className="focus:outline-none text-white text-xl"style={{backgroundColor:"black" , color:"white"}}>
               ☰
             </button>
           </div>
