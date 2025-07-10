@@ -6,5 +6,5 @@
   width: 100%;
 }
 html, body {
-  @apply bg-black;
+  background-color: "black";
 }
