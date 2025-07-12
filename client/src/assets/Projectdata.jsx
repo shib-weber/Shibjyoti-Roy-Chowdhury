@@ -124,7 +124,7 @@
     Helps users with both technical and non-technical questions through conversational AI. 
     This project merges frontend creativity with modern NLP capabilities.`,
         link: "https://github.com/shib-weber/Zelo-Ai",
-        live:"https://zelo-ai.onrender.com"
+        live:"https://shib-weber.github.io/Zelo-Ai/"
     },
     {
         project:"Project 10",
