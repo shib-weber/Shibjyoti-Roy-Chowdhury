@@ -26,7 +26,7 @@ export default function Header() {
             >
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
                     Trust Me <span className="text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]">!!</span> I'm a 
-                    <span className="block py-2 mt-2 bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent drop-shadow-sm">
+                    <span className="block Ftext-3xl lg:text-6xl  py-2 mt-2 bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent drop-shadow-sm">
                         Software Engineer
                     </span>
                 </h1>
