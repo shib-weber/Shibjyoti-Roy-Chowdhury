@@ -9,6 +9,7 @@ import About from './about';
 import AIStrokes from '../components/Aistroke';
 import Pic from '../assets/src.jpg'
 import Pic2 from '../assets/yn1.jpg';
+import Footer from '../components/Footer'
 
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -99,48 +100,22 @@ export default function Portfolio() {
 
 
         {/* Projects */}
-        <section id="projectst" className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
-          <h1 className="text-4xl font-semibold mb-6">
-            <span
-              className="text-transparent bg-clip-text"
-              style={{
-                backgroundImage: `url(${Pic2})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'left',
-                fontWeight: 'bold'
-              }}
-            >
-              Projects
-            </span>
-          </h1>
+        <section id="projectst" className="rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
           <ProjectList />     
         </section>
         <AIStrokes />
 
         {/* Terminal Section */}
-        <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] backdrop-blur-2xl">
-          <h1 className="text-4xl font-semibold mb-6">
-            <span
-              className="text-transparent bg-clip-text"
-              style={{
-                backgroundImage: `url(${Pic2})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'top',
-                fontWeight: 'bold'
-              }}
-            >
-              Terminal
-            </span>
-          </h1>
+        <section className="rounded-2xl bg-white/[0.02] border border-white/[0.05] backdrop-blur-2xl">
           <Terminal />
         </section>
 
         {/* Contact Section */}
-        <div id="contactt" className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
+        <div id="contactt" className=" rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
           <Contacts />
         </div>
-
       </div>
+              <Footer></Footer>
     </div>
   );
 }

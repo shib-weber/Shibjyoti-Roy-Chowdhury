@@ -1,153 +1,210 @@
-    import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-    export default function Terminal() {
-    const [outputLines, setOutputLines] = useState(['Type "Help"']);
-    const [inFeedbackSession, setInFeedbackSession] = useState(false);
-    const [feedbackData, setFeedbackData] = useState({});
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const inputRef = useRef();
-    const outputRef = useRef();
+export default function Terminal() {
+  const [outputLines, setOutputLines] = useState([
+    'Welcome to SHIBDOS ver 1.0.0',
+    'Type "HELP" to initialize modules.\n'
+  ]);
+  const [inFeedbackSession, setInFeedbackSession] = useState(false);
+  const [feedbackData, setFeedbackData] = useState({});
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const inputRef = useRef();
+  const outputRef = useRef();
 
-    const predefinedAnswers = {
-        HELP: 'Available commands: \nFEEDBACK: Accepts Feedback\nCREATOR: Shows the Creator\nVERSION: Shows current version\nTIME: Shows time\nEXIT: Resets Terminal',
-        CREATOR: 'My creator is Shibjyoti Roy Chowdhury',
-        VERSION: 'SHIBDOS version 1.0.0',
-        TIME: new Date().toLocaleTimeString(),
-        EXIT: 'Goodbye!',
-    };
+  const predefinedAnswers = {
+    HELP: 'AVAILABLE INTERFACES:\n  HELP     - Display system command manifest\n  FEEDBACK - Initialize user telemetry feedback loop\n  CREATOR  - Output core developer diagnostics\n  VERSION  - Display shell firmware iteration\n  TIME     - Print current synchronized hardware clock\n  CLEAR    - Flush terminal console buffer\n  EXIT     - Terminate session instance',
+    CREATOR: 'DEVELOPER ID: Shibjyoti Roy Chowdhury\nSTATUS: Active // Full-Stack Engineer',
+    VERSION: 'SHELL FIRMWARE: SHIBDOS [v2.12.3-release]\nARCHITECTURE: x86_64 reactive-vdom',
+    TIME: () => `SYSTEM TIME: ${new Date().toLocaleTimeString()}`,
+    EXIT: 'Session terminated. Reinitializing core buffer...',
+  };
 
-    const feedbackQuestions = [
-        "What is your name?",
-        "Rate this website (0-5) -- Your feedback is important?",
-        "What did you like the most in this website?",
-        "What can we improve?",
-        "Any additional comments?",
-    ];
+  const feedbackQuestions = [
+    "What is your name?",
+    "Rate this website (0-5) -- Your feedback is important?",
+    "What did you like the most in this website?",
+    "What can we improve?",
+    "Any additional comments?",
+  ];
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        inputRef.current?.focus();
-    }, []);
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
-    useEffect(() => {
-        if (outputRef.current) {
-        outputRef.current.scrollTop = outputRef.current.scrollHeight;
-        }
-    }, [outputLines]);
-
-    const appendOutput = (text) => {
-        setOutputLines((prev) => [...prev, text]);
-    };
-
-    const handleFeedbackSession = (input) => {
-        if (currentQuestionIndex < feedbackQuestions.length) {
-        if (currentQuestionIndex < 3 && input === '') {
-            appendOutput('This field is required');
-            return;
-        } else if (
-            currentQuestionIndex === 1 &&
-            (isNaN(input) || input < 0 || input > 5)
-        ) {
-            appendOutput('A number within range of 0 to 5 is required');
-            return;
-        }
-
-        setFeedbackData((prev) => ({
-            ...prev,
-            [`answer${currentQuestionIndex + 1}`]: input,
-        }));
-
-        const nextIndex = currentQuestionIndex + 1;
-        setCurrentQuestionIndex(nextIndex);
-
-        if (nextIndex < feedbackQuestions.length) {
-            appendOutput(feedbackQuestions[nextIndex]);
-        } else {
-            // Submit feedback
-            fetch('/feedback', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...feedbackData, [`answer${nextIndex}`]: input }),
-            })
-            .then((res) => res.json())
-            .then(() => {
-                appendOutput('Thank you for your feedback!');
-                appendOutput('Refresh the page to see your feedback\n');
-            })
-            .catch((err) =>
-                appendOutput(`Error submitting feedback: ${err.message}`)
-            );
-
-            // Reset
-            setInFeedbackSession(false);
-            setCurrentQuestionIndex(0);
-            setFeedbackData({});
-        }
-        }
-    };
-
-    const handleOtherCommands = (cmd) => {
-        if (cmd === 'FEEDBACK') {
-        setInFeedbackSession(true);
-        appendOutput('Entering feedback mode...');
-        appendOutput(feedbackQuestions[currentQuestionIndex]);
-        } else if (cmd === 'EXIT') {
-        setTimeout(() => setOutputLines(['Type "Help"']), 1000);
-        } else if (predefinedAnswers[cmd]) {
-        appendOutput(predefinedAnswers[cmd]);
-        } else {
-        appendOutput('Unknown command');
-        }
-    };
-
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-        const input = e.target.value.trim();
-        if (!input) return;
-
-        appendOutput(`$:> ${input}`);
-
-        if (inFeedbackSession) {
-            handleFeedbackSession(input);
-        } else {
-            handleOtherCommands(input.toUpperCase());
-        }
-
-        e.target.value = '';
-        }
-    };
-
-    return (
-    <section className=" sm:w-[50%]   px-4 py-6 sm:px-6 lg:px-10 bg-black text-green-400 font-mono mb-16 rounded-lg shadow-lg max-w-7xl mx-auto">
-            <div className="mb-4">
-            <div className="w-full  px-4 py-2 flex items-center gap-2 rounded-t-md">
-                <span className="w-3 h-3 rounded-full bg-red-500 shadow-md"></span>
-                <span className="w-3 h-3 rounded-full bg-yellow-400 shadow-md"></span>
-                <span className="w-3 h-3 rounded-full bg-green-500 shadow-md"></span>
-            </div>
-            </div>
-            <div className="bg-black border border-green-400 flex flex-col h-[40vh] sm:h-[45vh] rounded-md">
-            <div
-                ref={outputRef}
-                className="flex-1 output overflow-auto p-2 whitespace-pre-line text-sm sm:text-base"
-            >
-                {outputLines.map((line, index) => (
-                <div key={index}>{line}</div>
-                ))}
-            </div>
-            <div className="border-t border-green-400 flex items-center px-2 py-1">
-                <span className="prompt mr-2 text-sm sm:text-lg">$:&gt;</span>
-                <input
-                ref={inputRef}
-                type="text"
-                className="w-full bg-black text-green-400 outline-none text-sm sm:text-lg"
-                placeholder="Type Help"
-                onKeyDown={handleKeyDown}
-                />
-            </div>
-            </div>
-
-    </section>
-    );
-
+  useEffect(() => {
+    if (outputRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight;
     }
+  }, [outputLines]);
+
+  const appendOutput = (text) => {
+    setOutputLines((prev) => [...prev, text]);
+  };
+
+  const handleFeedbackSession = (input) => {
+    if (currentQuestionIndex < 3 && input === '') {
+      appendOutput('>> SYSTEM ERROR: This structural node field is required.');
+      return;
+    } 
+    
+    if (currentQuestionIndex === 1) {
+      const parsedRating = parseInt(input, 10);
+      if (isNaN(parsedRating) || parsedRating < 0 || parsedRating > 5) {
+        appendOutput('>> VALIDATION ERROR: Telemetry metric must sit precisely within 0 - 5 bounds.');
+        return;
+      }
+    }
+
+    const updatedFeedback = {
+      ...feedbackData,
+      [`answer${currentQuestionIndex + 1}`]: input,
+    };
+    setFeedbackData(updatedFeedback);
+
+    const nextIndex = currentQuestionIndex + 1;
+    setCurrentQuestionIndex(nextIndex);
+
+    if (nextIndex < feedbackQuestions.length) {
+      appendOutput(`\n[QUESTION 020${nextIndex + 1}/${feedbackQuestions.length}]`);
+      appendOutput(feedbackQuestions[nextIndex]);
+    } else {
+      appendOutput('\n>> Packet compiled. Transmitting data package payload upstream...');
+      
+      fetch('/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedFeedback),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("Server transmission error");
+          return res.json();
+        })
+        .then(() => {
+          appendOutput('>> SUCCESS: Telemetry data logged successfully.');
+          appendOutput('>> Notice: Refresh core view layout to inspect pipeline array.\n');
+        })
+        .catch((err) =>
+          appendOutput(`>> CRITICAL FAILURE: Pipeline transmission rejected: ${err.message}\n`)
+        );
+
+      setInFeedbackSession(false);
+      setCurrentQuestionIndex(0);
+      setFeedbackData({});
+    }
+  };
+
+  const handleOtherCommands = (cmd) => {
+    if (cmd === 'FEEDBACK') {
+      setInFeedbackSession(true);
+      appendOutput('\nInitializing telemetry session. Enter required parameters.');
+      appendOutput(`[QUESTION 01/${feedbackQuestions.length}]`);
+      appendOutput(feedbackQuestions[0]);
+    } else if (cmd === 'CLEAR') {
+      setOutputLines([]);
+    } else if (cmd === 'EXIT') {
+      appendOutput(predefinedAnswers.EXIT);
+      setTimeout(() => setOutputLines(['Welcome to SHIBDOS ver 2.12.3', 'Type "HELP" to initialize modules.\n']), 1200);
+    } else if (predefinedAnswers[cmd]) {
+      const output = typeof predefinedAnswers[cmd] === 'function' ? predefinedAnswers[cmd]() : predefinedAnswers[cmd];
+      appendOutput(output);
+    } else {
+      appendOutput(`>> COMMAND NOT FOUND: "${cmd}". Type "HELP" for valid system matrix hooks.`);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      const rawInput = e.target.value;
+      const trimmedInput = rawInput.trim();
+
+      if (trimmedInput === '' && !inFeedbackSession) return;
+
+      appendOutput(`shibdos@user:~# ${rawInput}`);
+
+      if (inFeedbackSession) {
+        handleFeedbackSession(trimmedInput);
+      } else {
+        handleOtherCommands(trimmedInput.toUpperCase());
+      }
+
+      e.target.value = '';
+    }
+  };
+
+  return (
+    <section 
+      id="terminalt"
+      className="w-full max-w-3xl mx-auto px-4 sm:px-6 mb-16 select-none"
+      onClick={() => inputRef.current?.focus()}
+    >
+        {/* Section Heading Titles */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+            Dos Terminal
+          </h2>
+          <p className="mt-2 text-sm sm:text-base text-cyan-400 font-mono tracking-wider">
+            {"[ Feedback_support_system ]"}
+          </p>
+        </div>
+      {/* Outer Shell Wrapper Frame */}
+      <div className="relative shadow-lg shadow-cyan-400 sm:w-full bg-slate-950/80 backdrop-blur-md border border-emerald-500/30 rounded-2xl shadow-[0_25px_60px_-15px_rgba(16,185,129,0.15)] overflow-hidden transition-all duration-300 hover:border-emerald-500/50">
+        
+        {/* Upper Operating Window Header Track bar */}
+        <div className="w-full bg-slate-900/60 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 rounded-full bg-red-500/70 border border-red-600/40"></span>
+            <span className="w-3 h-3 rounded-full bg-yellow-500/70 border border-yellow-600/40"></span>
+            <span className="w-3 h-3 rounded-full bg-emerald-500/70 border border-emerald-600/40"></span>
+          </div>
+          <span className="text-xs font-mono tracking-widest text-emerald-400/60 uppercase font-bold">
+            shibdos_bash
+          </span>
+          <div className="w-12" />
+        </div>
+
+        {/* Console Readout Output Core with Native Cyber Scrollbar Rules */}
+        <div 
+          ref={outputRef}
+          className="h-[320px] sm:h-[380px] overflow-y-auto p-4 font-mono text-xs sm:text-sm text-emerald-400 text-left leading-relaxed whitespace-pre-line bg-black/40
+            [&::-webkit-scrollbar]:w-2
+            [&::-webkit-scrollbar-track]:bg-black/20
+            [&::-webkit-scrollbar-thumb]:bg-emerald-500/20
+            [&::-webkit-scrollbar-thumb]:rounded-full
+            hover:[&::-webkit-scrollbar-thumb]:bg-emerald-500/40"
+        >
+          {outputLines.map((line, index) => (
+            <div 
+              key={index} 
+              className={`w-full text-left truncate-none ${
+                line.startsWith('shibdos@user') 
+                  ? 'text-cyan-400 font-bold' 
+                  : line.startsWith('>>') 
+                  ? 'text-red-400' 
+                  : 'text-emerald-400/90'
+              }`}
+            >
+              {line}
+            </div>
+          ))}
+        </div>
+
+        {/* Live Input Console Command Injector Row */}
+        <div className="border-t border-emerald-500/20 bg-black/60 flex items-center px-4 py-3 font-mono">
+          <span className="text-cyan-400 font-bold text-xs sm:text-sm tracking-tight mr-2.5 shrink-0 select-none">
+            shibdos@user:
+          </span>
+          <input
+            ref={inputRef}
+            type="text"
+            className="w-full bg-transparent text-emerald-300 outline-none border-none text-xs sm:text-sm font-mono tracking-wide caret-emerald-400 text-left"
+            placeholder={inFeedbackSession ? "Type answer string..." : 'Type "HELP"'}
+            onKeyDown={handleKeyDown}
+            autoComplete="off"
+            spellCheck="false"
+          />
+        </div>
+
+      </div>
+    </section>
+  );
+}
