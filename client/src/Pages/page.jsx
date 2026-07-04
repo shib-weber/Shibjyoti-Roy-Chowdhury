@@ -37,8 +37,7 @@ export default function Portfolio() {
   
   <div className="flex justify-between items-center max-w-6xl mx-auto">
     <div className="flex items-center gap-3 font-bold text-sm sm:text-xl tracking-wide">
-      <img src={Pic} alt="Profile" className="rounded-full w-8 h-8 object-cover border border-white/20" />
-      <span>Shibjyoti Roy Chowdhury</span>
+        <span className='bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent'>SHIBJYOTI ROY CHOWDHURY</span>
     </div>
 
     {/* Mobile Burger Trigger */}
