@@ -7,12 +7,11 @@ import Header from './header';
 import Education from './Education';
 import About from './about';
 import AIStrokes from '../components/Aistroke';
-import AIStroke2 from '../components/Aistroke2'
 import Pic from '../assets/src.jpg'
 import Pic2 from '../assets/yn1.jpg';
 
 export default function Portfolio() {
-    const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -20,137 +19,156 @@ export default function Portfolio() {
       setMenuOpen(false); // Close mobile menu
     }
   };
+
   return (
-    <div id="sections" className=" font-sans light:bg-white light:text-black dark:bg-black dark:text-white min-h-screen">
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 bg-gray-900 text-white shadow-lg p-4 z-50 shadow-amber-400">
-        <div className="flex justify-between items-center max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 font-bold text-sm sm:text-xl">
-            <img src={Pic} alt="Profile" className="rounded-full w-8 h-8" />
-            Shibjyoti Roy Chowdhury
-          </div>
+    <div id="sections" className="relative font-sans bg-[#080710] text-white min-h-screen overflow-x-hidden">
+      
+      <div className="absolute top-[10%] left-[-10%] w-[350px] h-[350px] sm:w-[600px] sm:h-[600px] bg-purple-600 rounded-full mix-blend-screen filter blur-[120px] opacity-40 animate-pulse pointer-events-none z-0"></div>
+      <div className="absolute top-[40%] right-[-10%] w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-fuchsia-600 rounded-full mix-blend-screen filter blur-[130px] opacity-35 pointer-events-none z-0"></div>
+      <div className="absolute bottom-[20%] left-[10%] w-[400px] h-[400px] sm:w-[700px] sm:h-[700px] bg-violet-600 rounded-full mix-blend-screen filter blur-[150px] opacity-40 animate-pulse pointer-events-none z-0"></div>
 
-          <div className="md:hidden bg-black">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="focus:outline-none text-white text-xl"style={{backgroundColor:"black" , color:"white"}}>
-              ☰
-            </button>
-          </div>
+<nav className="fixed top-0 left-0 right-0 text-white p-4 z-50 
+  /* Glassmorphism Configuration */
+  bg-white/5 backdrop-blur-md border-b border-white/10 
+  /* Neon Blue Bottom Glow */
+  shadow-lg
+  shadow-cyan-500/80">
+  
+  <div className="flex justify-between items-center max-w-6xl mx-auto">
+    <div className="flex items-center gap-3 font-bold text-sm sm:text-xl tracking-wide">
+      <img src={Pic} alt="Profile" className="rounded-full w-8 h-8 object-cover border border-white/20" />
+      <span>Shibjyoti Roy Chowdhury</span>
+    </div>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex space-x-4 items-center text-sm sm:text-base">
-            <button onClick={() => scrollToSection("aboutt")} className="bg-amber-800 hover:text-yellow-400" style={{backgroundColor:"transparent"}}>About</button>
-            <button onClick={() => scrollToSection("timelinet")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Education</button>
-            <button onClick={() => scrollToSection("projectst")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Projects</button>
-            <button onClick={() => scrollToSection("techstackt")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Tech Stack</button>
-            <button onClick={() => scrollToSection("contactt")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Contact</button>
-          </div>
+    {/* Mobile Burger Trigger */}
+    <div className="md:hidden">
+      <button 
+        onClick={() => setMenuOpen(!menuOpen)} 
+        className="outline-2 outline-cyan-400  text-cyan-400 text-xl bg-transparent p-1 transition-transform active:scale-95"
+      >
+        {menuOpen ? '✕' : '☰'}
+      </button>
+    </div>
+
+    {/* Desktop Nav */}
+    <div className="hidden md:flex space-x-6 items-center text-sm sm:text-base">
+      <button onClick={() => scrollToSection("aboutt")} className="hover:text-cyan-400 transition-colors bg-transparent text-cyan-400 font-medium">About</button>
+      <button onClick={() => scrollToSection("timelinet")} className="hover:text-cyan-400 transition-colors bg-transparent text-cyan-400 font-medium">Education</button>
+      <button onClick={() => scrollToSection("projectst")} className="hover:text-cyan-400 transition-colors bg-transparent text-teal-400 font-medium">Projects</button>
+      <button onClick={() => scrollToSection("techstackt")} className="hover:text-cyan-400 transition-colors bg-transparent text-emerald-400 font-medium">Tech Stack</button>
+      <button onClick={() => scrollToSection("contactt")} className="hover:text-cyan-400 transition-colors bg-transparent text-cyan-400 font-medium">Contact</button>
+    </div>
+  </div>
+
+  {/* Mobile Nav Menu */}
+  {menuOpen && (
+    <div className="md:hidden flex flex-col items-start mt-4 px-4 space-y-3 text-sm rounded-xl py-4
+      /* Match parental glass styling */
+      bg-gray-950/80 backdrop-blur-lg border border-white/10 shadow-[0_10px_20px_rgba(0,191,255,0.15)]">
+      <button onClick={() => { scrollToSection("aboutt"); setMenuOpen(false); }} className="hover:text-cyan-400 w-full text-left bg-transparent text-cyan-400 py-1 transition-colors">About</button>
+      <button onClick={() => { scrollToSection("timelinet"); setMenuOpen(false); }} className="hover:text-cyan-400 w-full text-left bg-transparent text-cyan-400 py-1 transition-colors">Education</button>
+      <button onClick={() => { scrollToSection("projectst"); setMenuOpen(false); }} className="hover:text-cyan-400 w-full text-left bg-transparent text-teal-400 py-1 transition-colors">Projects</button>
+      <button onClick={() => { scrollToSection("techstackt"); setMenuOpen(false); }} className="hover:text-cyan-400 w-full text-left bg-transparent text-teal-400 py-1 transition-colors">Tech Stack</button>
+      <button onClick={() => { scrollToSection("contactt"); setMenuOpen(false); }} className="hover:text-cyan-400 w-full text-left bg-transparent py-1 text-emerald-400 transition-colors">Contact</button>
+    </div>
+  )}
+</nav>
+
+      <div className="relative z-10 backdrop-blur-xl bg-white/[0.01] min-h-screen pt-24 pb-12 px-4 sm:px-8 max-w-8xl mx-auto space-y-16">
+        
+        {/* Header Section */}
+        <Header />
+
+        {/* About Me */}
+        <div id="aboutt" className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
+          <About />
         </div>
 
-        {/* Mobile Nav */}
-        {menuOpen && (
-          <div className="md:hidden flex flex-col items-start mt-4 px-4 space-y-2 text-sm">
-            <button onClick={() => scrollToSection("aboutt")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>About</button>
-            <button onClick={() => scrollToSection("timelinet")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Education</button>
-            <button onClick={() => scrollToSection("projectst")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Projects</button>
-            <button onClick={() => scrollToSection("techstackt")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Tech Stack</button>
-            <button onClick={() => scrollToSection("contactt")} className="hover:text-yellow-400" style={{backgroundColor:"transparent"}}>Contact</button>
-          </div>
-        )}
-      </nav>
+        <AIStrokes />
 
-      {/* Header Section */}
-      <Header></Header>
+        {/* Timeline */}
+        <section id="timelinet" className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">        
+          <h1 className="text-4xl font-semibold mb-6">
+            <span
+              className="text-transparent bg-clip-text"
+              style={{
+                backgroundImage: `url(${Pic2})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'top',
+                fontWeight: 'bold'
+              }}
+            >
+              Educational Timeline
+            </span>
+          </h1>
+          <Education />
+        </section>
 
-      {/* About Me */}
-      <About></About>
+        <AIStrokes />
 
-      <AIStrokes></AIStrokes>
+        {/* Tech Stack */}
+        <section id="techstackt" className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
+          <h1 className="text-4xl font-semibold mb-6">
+            <span
+              className="text-transparent bg-clip-text"
+              style={{
+                backgroundImage: `url(${Pic2})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'top',
+                fontWeight: 'bold'
+              }}
+            >
+              Technical Stack
+            </span>
+          </h1>
+          <Techstack />
+        </section>
+        <AIStrokes />
 
-      {/* Timeline */}
-        <section id="timelinet" className="p-6 ml-5 mr-5 pt-16 mb-10  rounded-lg shadow">        
-        <h1 className="text-4xl font-semibold mb-6 t">
-                    <span
-                        className="text-transparent bg-clip-text"
-                        style={{
-                            backgroundImage: `url(${Pic2})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'top',
-                            fontWeight: 'bold'
-                        }}
-                    >
-                        Educational Timeline
-                    </span>
-        </h1>
-        <Education></Education>
-      </section>
-      <AIStroke2></AIStroke2>
 
-      {/* Tech Stack */}
-      <section id="techstackt" className="ml-5 mr-5 p-6   mb-16">
-        <h1 className="text-4xl font-semibold mb-6 t">
-                    <span
-                        className="text-transparent bg-clip-text"
-                        style={{
-                            backgroundImage: `url(${Pic2})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'top',
-                            fontWeight: 'bold'
-                        }}
-                    >
-                        Technical Stack
-                    </span>
-        </h1>
-          <Techstack></Techstack>
-      </section>
-      <div className="animations shadow-xl rounded-full shadow-amber-400 bg-transparent flex absolute h-[190px] w-[15px] sm:ml-[80%]  ml-[70%] sm:-mt-30 -mt-40"></div>
-      <div className="animations shadow-lg rounded-full shadow-amber-800 bg-transparent flex absolute h-[200px] w-[15px] sm:ml-[82%] ml-[75%] sm:-mt-30 -mt-40"></div>
-      <div className="animations shadow-lg rounded-full shadow-amber-900 bg-transparent flex absolute h-[210px] w-[15px] sm:ml-[84%] ml-[80%] sm:-mt-30 -mt-40"></div>
+        {/* Projects */}
+        <section id="projectst" className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
+          <h1 className="text-4xl font-semibold mb-6">
+            <span
+              className="text-transparent bg-clip-text"
+              style={{
+                backgroundImage: `url(${Pic2})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'left',
+                fontWeight: 'bold'
+              }}
+            >
+              Projects
+            </span>
+          </h1>
+          <ProjectList />     
+        </section>
+        <AIStrokes />
 
-      {/* Projects */}
-      <section id="projectst" className="p-6 mt-20 ml-5 mr-5 mb-26  ">
-        <h1 className="text-4xl font-semibold mb-6 t">
-                    <span
-                        className="text-transparent bg-clip-text"
-                        style={{
-                            backgroundImage: `url(${Pic2})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'left',
-                            fontWeight: 'bold'
-                        }}
-                    >
-                        Projects
-                    </span>
-        </h1>
-        <ProjectList></ProjectList>     
-            <div className="absolute">
-      {/* all your other sections */}
-    </div>
-      </section>
-      <div className="animations shadow-lg rounded-full shadow-amber-900 bg-transparent flex absolute h-[120px] sm:h-[210px] w-[15px] sm:ml-[16%] ml-[16%] -mt-30"></div>
-      <div className="animations shadow-lg rounded-full shadow-amber-800 bg-transparent flex absolute h-[110px] sm:h-[200px] w-[15px] sm:ml-[18%] ml-[21%] -mt-30"></div>
-      <div className="animations shadow-xl rounded-full shadow-amber-400 bg-transparent flex absolute h-[100px] sm:h-[190px] w-[15px] sm:ml-[20%] ml-[26%] -mt-30"></div>
+        {/* Terminal Section */}
+        <section className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] backdrop-blur-2xl">
+          <h1 className="text-4xl font-semibold mb-6">
+            <span
+              className="text-transparent bg-clip-text"
+              style={{
+                backgroundImage: `url(${Pic2})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'top',
+                fontWeight: 'bold'
+              }}
+            >
+              Terminal
+            </span>
+          </h1>
+          <Terminal />
+        </section>
 
-      {/* Feedback Terminal */}
-              <h1 className="text-4xl font-semibold mb-6 t">
-                    <span
-                        className="text-transparent bg-clip-text"
-                        style={{
-                            backgroundImage: `url(${Pic2})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'top',
-                            fontWeight: 'bold'
-                        }}
-                    >
-                        Terminal
-                    </span>
-        </h1>
-      <Terminal></Terminal>
+        {/* Contact Section */}
+        <div id="contactt" className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
+          <Contacts />
+        </div>
 
-      {/* Contact Section */}
-      <Contacts></Contacts>
-
-      <section className="ml-15 mr-15 h-30 px-6 pb-3 ">
-</section>
+      </div>
     </div>
   );
 }

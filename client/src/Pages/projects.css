@@ -6,7 +6,7 @@
 }
     @keyframes flicker {
     0% { box-shadow: 0 0 2px #6463638f; }
-    5% { box-shadow: 0 0 5px #6463638f; }
+    5% { box-shadow: 0 0 5px #6364648f; }
     10% { box-shadow: 0 0 15px #6463638f; }
     15% { box-shadow: 0 0 5px #6463638f; }
     20% { box-shadow: 0 0 10px #6463638f; }
