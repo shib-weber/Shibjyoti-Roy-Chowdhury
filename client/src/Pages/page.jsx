@@ -10,6 +10,7 @@ import AIStrokes from '../components/Aistroke';
 import Pic from '../assets/src.jpg'
 import Pic2 from '../assets/yn1.jpg';
 import Footer from '../components/Footer'
+import CollaborationBanner from './CollaborationBanner'
 
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -88,6 +89,8 @@ export default function Portfolio() {
         <section id="timelinet" className=" rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">        
           <Education />
         </section>
+        <AIStrokes />
+        <CollaborationBanner />
 
         <AIStrokes />
 
