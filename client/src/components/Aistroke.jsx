@@ -2,7 +2,7 @@ import React from "react";
 
 export default function GlowingStrokes() {
   return (
-    <div className="w-full flex justify-center py-8 relative overflow-hidden pointer-events-none select-none">
+    <div className="w-full flex justify-center py-0 relative overflow-hidden pointer-events-none select-none">
       <svg
         viewBox="0 0 200 120"
         width="200"

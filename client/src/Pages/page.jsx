@@ -80,47 +80,19 @@ export default function Portfolio() {
         <Header />
 
         {/* About Me */}
-        <div id="aboutt" className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
           <About />
-        </div>
 
         <AIStrokes />
 
         {/* Timeline */}
-        <section id="timelinet" className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">        
-          <h1 className="text-4xl font-semibold mb-6">
-            <span
-              className="text-transparent bg-clip-text"
-              style={{
-                backgroundImage: `url(${Pic2})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'top',
-                fontWeight: 'bold'
-              }}
-            >
-              Educational Timeline
-            </span>
-          </h1>
+        <section id="timelinet" className=" rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">        
           <Education />
         </section>
 
         <AIStrokes />
 
         {/* Tech Stack */}
-        <section id="techstackt" className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
-          <h1 className="text-4xl font-semibold mb-6">
-            <span
-              className="text-transparent bg-clip-text"
-              style={{
-                backgroundImage: `url(${Pic2})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'top',
-                fontWeight: 'bold'
-              }}
-            >
-              Technical Stack
-            </span>
-          </h1>
+        <section id="techstackt" className=" rounded-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(147,51,234,0.07)]">
           <Techstack />
         </section>
         <AIStrokes />
