@@ -14,7 +14,7 @@ app = FastAPI()
 allowed_origins = [
     "http://localhost:3000",      
     "http://localhost:5173",       
-    "https://shibjyoti-roy-chowdhury.vercel.app/"  
+    "https://shibjyoti-roy-chowdhury.vercel.app"  
 ]
 
 app.add_middleware(
