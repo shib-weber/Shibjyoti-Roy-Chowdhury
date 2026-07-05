@@ -71,7 +71,7 @@ export default function Terminal() {
       appendOutput('\n>> Packet compiled. Transmitting data package payload upstream...');
       
       // Target correct port on localhost to communicate with the Express server
-      fetch('http://127.0.0.1:8000/feedback', {
+      fetch('https://shibjyoti-roy-chowdhury-server.onrender.com/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedFeedback),

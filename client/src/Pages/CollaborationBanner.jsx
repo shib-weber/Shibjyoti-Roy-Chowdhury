@@ -52,7 +52,7 @@ export default function CollaborationBanner() {
             onClick={() => navigate('/services')}
             className="w-full lg:w-auto flex items-center justify-center gap-2 font-bold px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 text-sm tracking-wide uppercase shadow-lg shadow-amber-500/10 hover:opacity-95 transition-all group active:scale-[0.98]"
           >
-            Request Service Router
+            Request Collaboration
             <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
         </div>
