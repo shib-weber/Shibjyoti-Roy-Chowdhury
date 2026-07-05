@@ -14,7 +14,7 @@ export default function Terminal() {
   const predefinedAnswers = {
     HELP: 'AVAILABLE INTERFACES:\n  HELP     - Display system command manifest\n  FEEDBACK - Initialize user telemetry feedback loop\n  CREATOR  - Output core developer diagnostics\n  VERSION  - Display shell firmware iteration\n  TIME     - Print current synchronized hardware clock\n  CLEAR    - Flush terminal console buffer\n  EXIT     - Terminate session instance',
     CREATOR: 'DEVELOPER ID: Shibjyoti Roy Chowdhury\nSTATUS: Active // Full-Stack Engineer',
-    VERSION: 'SHELL FIRMWARE: SHIBDOS [v2.12.3-release]\nARCHITECTURE: x86_64 reactive-vdom',
+    VERSION: 'SHELL FIRMWARE: SHIBDOS [v2.12.5-release]\nARCHITECTURE: x86_64 reactive-vdom',
     TIME: () => `SYSTEM TIME: ${new Date().toLocaleTimeString()}`,
     EXIT: 'Session terminated. Reinitializing core buffer...',
   };
@@ -82,7 +82,6 @@ export default function Terminal() {
         })
         .then(() => {
           appendOutput('>> SUCCESS: Telemetry data logged successfully.');
-          appendOutput('>> Notice: Refresh core view layout to inspect pipeline array.\n');
         })
         .catch((err) =>
           appendOutput(`>> CRITICAL FAILURE: Pipeline transmission rejected: ${err.message}\n`)
@@ -104,7 +103,7 @@ export default function Terminal() {
       setOutputLines([]);
     } else if (cmd === 'EXIT') {
       appendOutput(predefinedAnswers.EXIT);
-      setTimeout(() => setOutputLines(['Welcome to SHIBDOS ver 2.12.3', 'Type "HELP" to initialize modules.\n']), 1200);
+      setTimeout(() => setOutputLines(['Welcome to SHIBDOS ver 2.12.5', 'Type "HELP" to initialize modules.\n']), 1200);
     } else if (predefinedAnswers[cmd]) {
       const output = typeof predefinedAnswers[cmd] === 'function' ? predefinedAnswers[cmd]() : predefinedAnswers[cmd];
       appendOutput(output);
