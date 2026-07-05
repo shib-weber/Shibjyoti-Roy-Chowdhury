@@ -188,13 +188,13 @@ export default function ServicesAndCheckout() {
             <div className="flex flex-col items-center justify-center p-6 bg-slate-900/60 border border-white/5 rounded-2xl">
               <div className="w-44 h-44 bg-white p-2 rounded-xl shadow-inner relative flex items-center justify-center">
                 <img 
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=yourupiid@bank%26pn=YourName%26cu=INR" 
+                  src="Qr.jpeg" 
                   alt="UPI QR Code Scanner"
                   className="w-full h-full object-contain"
                 />
               </div>
               <p className="mt-3 text-xs text-slate-400 font-mono tracking-tight bg-slate-950 px-3 py-1 rounded-full border border-white/5">
-                UPI ID: yourupiid@bank
+                UPI ID: 8100048054@ptyes
               </p>
             </div>
           </div>
