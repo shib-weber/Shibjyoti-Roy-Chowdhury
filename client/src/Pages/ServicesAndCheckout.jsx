@@ -72,7 +72,8 @@ export default function ServicesAndCheckout() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('/api/orders', {
+      // UPDATED ROUTE: Points directly to your new FastAPI Discord gateway endpoint
+      const response = await fetch('http://127.0.0.1:8000/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function Terminal() {
   const [outputLines, setOutputLines] = useState([
-    'Welcome to SHIBDOS ver 1.0.0',
+    'Welcome to SHIBDOS ver 2.12.5',
     'Type "HELP" to initialize modules.\n'
   ]);
   const [inFeedbackSession, setInFeedbackSession] = useState(false);
@@ -70,7 +70,8 @@ export default function Terminal() {
     } else {
       appendOutput('\n>> Packet compiled. Transmitting data package payload upstream...');
       
-      fetch('/feedback', {
+      // Target correct port on localhost to communicate with the Express server
+      fetch('http://127.0.0.1:8000/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedFeedback),
@@ -119,7 +120,7 @@ export default function Terminal() {
 
       if (trimmedInput === '' && !inFeedbackSession) return;
 
-      appendOutput(`shibdos@user:~# ${rawInput}`);
+      appendOutput(`shibdos@user: ${rawInput}`);
 
       if (inFeedbackSession) {
         handleFeedbackSession(trimmedInput);
